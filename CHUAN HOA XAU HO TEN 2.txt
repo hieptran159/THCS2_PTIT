@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<string.h>
+
+int main(){
+	int t;
+	scanf("%d",&t);
+	while(t--){
+		char a[50];
+		scanf("\n");
+		gets(a);
+	    int x=0 ,j=0 , l=strlen(a), vt ,i ;
+	    while(a[x]==' ') {
+	    	x++;
+	    	j++;
+		}
+	    while(a[l-1]==' '){
+            l--;
+		}
+	    while(x<l){
+	    	if(a[x]==' ') {
+	    		vt=x;
+                break;
+            }
+	    	x++;
+        }
+		for(i=x;i<l;i++){
+			if(a[i-1]==' ' && a[i]!=' '){
+				if(a[i]>=97 && a[i]<=122) {
+                    a[i]=a[i]-32;
+                }
+				printf("%c",a[i]);
+
+			}
+			else if(a[i-1]!=' ' && a[i]!=' ' && a[i+1]!=' '){
+                    if(a[i]>=65 && a[i]<=90) {
+                        a[i]=a[i]+32;
+                    }
+                    printf("%c",a[i]);
+			}
+			else if( a[i-1]!=' ' && a[i]!=' ' && a[i+1]==' '){
+                    if(a[i]>=65 && a[i]<=90){
+                        a[i]=a[i]+32;
+                    }
+                    if(i!=l-1) {
+                    printf("%c",a[i]);
+                    printf(" ");
+                }
+                    else printf("%c",a[i]);
+			}
+
+		}
+		printf(", ");
+		for(i=j;i<vt;i++){
+			if(a[i]>=97 && a[i]<=122){
+				a[i]=a[i]-32;
+			}
+			printf("%c",a[i]);
+		}
+		printf("\n");
+	}
+}
