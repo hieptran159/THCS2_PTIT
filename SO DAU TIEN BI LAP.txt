@@ -1,0 +1,39 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+void swap(int *a, int *b){
+		int temp = *a; 
+		*a = *b;
+		*b = temp;
+}
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+
+int main()
+{	
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		long long n, a[100005];
+		scanf("%lld", &n);
+		for(long long i = 1;i <= n; ++i)scanf("%lld",&a[i]);
+		int k=0;
+		for(long long i = 1;i <= n; ++i){
+		for(long long j = i + 1;j <= n; ++j){
+			if(a[i] == a[j]){printf("%lld\n",a[i]); k=1;}
+			if(k==1) break;}
+		if(k==1) break;
+		}
+		if(k==0)printf("NO\n");
+	}
+	return 0;
+}

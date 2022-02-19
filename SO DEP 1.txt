@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int snt(int n){
+    if(n<2) {return 0;}
+    int i;
+    for (int i=2; i<=sqrt(n); ++i)
+    {
+        if(n%i==0){return 0;}
+    }
+    return n;
+}
+
+int max(int a, int b)
+{
+    return (a>b) ? a:b;
+}
+int min(int a, int b)
+{
+    return (a<b) ? a:b;
+}
+
+int giaithua(int a)
+{
+    if(a==1) return 1;
+    else  return a*giaithua(a-1);
+}
+long long GCD(long long  a, long long b) {
+    if (b == 0) return a;
+    return GCD(b, a % b);
+}
+long long LCM(long long a, long long b) {
+    return (a * b) / GCD(a, b);
+}
+
+int fbc(int  n)
+{
+    int a1 = 1, a2 = 1;
+    if (n == 1 || n == 2)
+        return 1;
+    int i = 3, a;
+    while (i <= n)
+    {
+        a = a1 + a2;
+        a1 = a2;
+        a2 = a;
+        i++;
+    }
+    return a;
+}
+
+
+int main()
+{
+    int m;
+    scanf("%d",&m);
+    while(m--){
+    char s[500];
+    int k=0, t=0;
+    scanf("%s",&s);
+    int l=strlen(s);
+    f(i,0,strlen(s)-1){
+        //printf("%c ",s[i]);
+        if(s[i]==s[l-1-i]) {k++;}
+        if(s[i]%2==0) {t++;}
+    }
+    //printf("%d %d",k,t);
+    if(t==l && l==k) printf("YES\n"); else printf("NO\n");
+    }
+    return 0;
+}

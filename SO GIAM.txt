@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+int max(int a, int b){
+    return (a > b) ? a:b;
+}
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+bool kt(int n){
+    int a, b;
+    a = n % 10;
+    n /= 10;
+    while(n > 0){
+        b = n % 10;
+        n /= 10;
+        if(b <= a) return false;
+        a = b;
+    }
+    return true;
+}
+int so(int n){
+    int s = 1;
+    f(i,1,n) s*=10;
+    return s;
+}
+int main(){
+    int t;
+    scanf("%d",&t);
+    while(t--){
+        int a, b, cnt = 0;
+        scanf("%d%d",&a,&b);
+        f(i,a,b){
+            if(kt(i) == true) cnt++;
+        }
+        printf("%d\n",cnt);
+    }
+
+    return 0;
+}

@@ -1,0 +1,31 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+int min(int n, int m){
+	return (n<m) ? n:m;
+}
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int a, n, m;
+
+int main()
+{	
+	char s1[105], s2[105];
+	gets(s1);
+	gets(s2);
+	scanf("%d",&n);
+	--n;
+	f(i,0,n-1) printf("%c",s1[i]);
+	f(i,0,strlen(s2)-1) printf("%c",s2[i]);
+	f(i,n,strlen(s1)-1) printf("%c",s1[i]);
+	
+	return 0;
+}

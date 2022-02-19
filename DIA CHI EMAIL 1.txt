@@ -1,0 +1,60 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+int min(int n, int m){
+	return (n<m) ? n:m;
+}
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int a, n, m, c =0, x;
+
+int main()
+{	
+	char s[100] , Ho[100] , Ten[100];
+	gets(s);
+	int max = strlen(s);
+	int i = strlen(s) - 1 , dem = 1;
+	while(1){
+		if(s[i]==' ') i--;
+		else break;
+	}
+	while(1){
+		if(s[i-1]!=' '){
+			i--;
+			dem++;
+		}
+		else break;
+	}
+	int size = 0;
+	int j = 0;
+// Tim ho
+	while(1){
+		if(s[j]==' ') j++;
+		else break;
+	}
+	Ten[size] = tolower(s[j]);
+	j++;
+	size++;
+	for(  ; j < i ; j++ ){
+		if(s[j]!=' ' && s[j-1]==' '){
+			Ten[size]=tolower(s[j]);
+			size++;
+		}
+	}
+	while(dem--){
+		Ten[size] = tolower(s[i]);
+		size++;
+		i++;
+	}
+	strcat(Ten,"@ptit.edu.vn");
+	printf("%s\n",Ten);
+	return 0;
+}

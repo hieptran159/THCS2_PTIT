@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int a[100][100], n, m, c , x;
+
+int main()
+{	
+	scanf("%d %d", &n, &m);
+	int mx = max(n,m);
+	for(int i = 0; i < m; ++i) a[0][i] = mx;
+	int vt = 1;
+	for(int i = 1; i < n; ++i){
+		int j = 0;
+		while(j < vt){
+			a[i][j] = a[i-1][j];
+			j++;
+		}
+		for(int k = vt; k < m; ++k) a[i][k] = mx- vt;
+		vt++;
+	}
+	for(int i = 0; i < n; ++i){
+		for(int j = 0; j < m; ++j) printf("%c", a[i][j]+96);
+		printf("\n");
+	}
+	
+	
+	return 0;
+}

@@ -1,0 +1,21 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int a, b;
+
+int main()
+{	
+	scanf("%d %d", &a, &b);
+	for(int i = 1; i <= a; ++i){
+		for(int j = i; j <= b ; j++) printf("%c",j+63);
+		if (i >= b + 2) {
+			for(int j = 1; j <= b; ++j) printf("%c",b+63);
+		} else {
+		for(int j = 1; j < i; ++j) printf("%c",b+63);
+		}
+		printf("\n");
+	}
+	return 0;
+}

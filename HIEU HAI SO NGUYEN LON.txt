@@ -1,0 +1,85 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+
+int main()
+{	
+	int h;
+	scanf("%d",&h);
+	while(h--){
+	int a[1000],b[1000], t=0, k=0, nho=0, n[1000], x=0, y=0;
+    char c[1000], d[1000];
+    scanf("%s%s",&c,&d);
+   fn(i,strlen(c)-1,0){
+        a[++t]=c[i]-'0' ;
+   }
+   fn(i,strlen(d)-1,0){
+        b[++k]=d[i]-'0' ;
+   }
+   if ( t>k ){
+    f(i,k+1,t) { b[i]=0;}
+    f(i,1,t) {
+     if(a[i]-b[i]-nho < 0) { { n[i]=a[i]+10-b[i]-nho , nho=1;}}
+    else { n[i]=a[i]-b[i]-nho ,nho=0;}
+    }
+   
+    fn(i,t,1) {
+    	if(n[i]!=0) {
+		x=i;break;}	
+	}
+    fn(i,x,1){
+    	printf("%d",n[i]);
+	}
+		printf("\n");
+ }
+
+	else if(t==k){
+		 f(i,1,t) {
+    n[i]=a[i]-b[i];
+    }
+   	fn(i,t,1) {
+   		if(n[i]==0) y++;
+	   }
+	if(y==t) printf("0\n");
+	else {
+    fn(i,t,1) {
+    	if(n[i]!=0) {
+		x=i;break;}	
+	}
+    fn(i,x,1){
+     if(n[i]<0)	printf("%d",-n[i]);
+     else  printf("%d",n[i]);
+	}
+		printf("\n");
+	}
+}
+	else if (t<k){
+		 f(i,t+1,k) {a[i]=0;} 
+		 f(i,1,k){
+     if(b[i]-a[i]-nho < 0) {  n[i]=b[i]+10-a[i]-nho , nho=1;}
+    else { n[i]=b[i]-a[i]-nho ,nho=0;}
+    }
+   
+    fn(i,k,1) {
+    	if(n[i]!=0) {
+		x=i;break;}	
+	}
+    fn(i,x,1){
+    	printf("%d",n[i]);
+	}
+		printf("\n");
+	}
+}
+	return 0;
+}

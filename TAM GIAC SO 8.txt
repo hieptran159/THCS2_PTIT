@@ -1,0 +1,32 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+        printf("1");
+        printf("\n");
+    int mn=1;
+    for(int i=2; i<=n; ++i){
+            if(i%2==0){
+            for(int h=mn+i; h>=mn+1; --h){
+            printf("%d",h);
+            printf(" ");}
+        }
+            else{
+            for(int h=mn+1; h<=mn+i; ++h){
+            printf("%d",h);
+            printf(" ");}
+        }
+        printf("\n");
+        mn=mn+i;
+    }
+	return 0;
+}

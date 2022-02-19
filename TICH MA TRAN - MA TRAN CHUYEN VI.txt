@@ -1,0 +1,45 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+int min(int n, int m){
+	return (n<m) ? n:m;
+}
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int a[50][50], b[50][50], c[50][50], n, m;
+
+int main()
+{	
+	int t;
+	scanf("%d", &t);
+	f(x,1,t){
+    scanf("%d %d", &n, &m);
+    for (int i = 1; i <= n; ++i){
+        f(j,1,m) scanf("%d", &a[i][j]);
+    }
+    f(i,1,m){
+        f(j,1,n) b[i][j] = a[j][i];
+    }
+    for(int i = 1; i <= n; ++i){
+        for(int j=1; j <= n; ++j){
+            for(int z=1; z <= m; ++z){
+                c[i][j] += a[i][z] * b[z][j];
+            }
+        }
+    }
+	printf("Test %d",x);
+	printf(":\n");
+    f(i,1,n) {f(j,1,n) printf("%d ", c[i][j]); printf("\n"); }
+    f(i,1,n) f(j,1,n) c[i][j]=0;
+    }
+	
+	return 0;
+}

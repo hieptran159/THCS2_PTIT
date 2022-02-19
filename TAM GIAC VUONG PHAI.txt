@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+
+int main()
+{
+    int day, h;
+    scanf("%d",&h);
+	day = h;
+	int j;
+	for (int i = 1; i<=h; i++) {
+		for (j = 1; j <= day - i; j++) {
+			printf("~");
+		}
+		for (int k = 1; k <= i; k++) {
+			printf("*");
+		}
+		printf("\n\n");}
+
+
+    return 0;
+}

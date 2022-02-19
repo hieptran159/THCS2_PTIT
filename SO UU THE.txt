@@ -1,0 +1,43 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main() {
+		
+		int v;
+		scanf("%d",&v);
+		while(v--){
+		char s[1005];
+		int n, m, l, t=0, k=0, x=0;
+		scanf("%s",&s);
+		l=strlen(s);
+		f(i,0,l-1){
+			if(s[i] >= 48 && s[i] <= 57) {
+				if (s[i]%2 == 0) t++;
+					else k++;
+				}	
+			else if(s[i]<48 || s[i]>57) {
+				x++;
+			}
+		}
+		//printf("%d %d %d %d\n",l , t, k, x);
+		if( s[0]==48 || x!=0 )
+			printf("INVALID\n");
+		else if (  t>k || t<k && t>0 && k>0 ){
+			printf("YES\n");
+		}
+	
+		else 
+			printf("NO\n");
+	
+	}
+	return 0;
+	
+}

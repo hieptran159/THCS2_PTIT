@@ -1,0 +1,105 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+/*
+bool snt(int  n){
+    if(n<2) {return false;}
+    int i;
+    for (int i=2; i<=sqrt(n); ++i)
+    {
+        if(n%i==0){return false;}
+    }
+    return true;
+}
+*/
+int max(int a, int b)
+{
+    return (a>b) ? a:b;
+}
+int min(int a, int b)
+{
+    return (a<b) ? a:b;
+}
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+/*
+int giaithua(int a)
+{
+    if(a==1) return 1;
+    else  return a*giaithua(a-1);
+}
+int GCD(int  a, int b) {
+    if (b == 0) return a;
+    return GCD(b, a % b);
+}
+int LCM(int a, int b) {
+    return (a * b) / GCD(a, b);
+}
+
+int fbc(int  n)
+{
+    int a1 = 1, a2 = 1;
+    if (n == 1 || n == 2)
+        return 1;
+    int i = 3, a;
+    while (i <= n)
+    {
+        a = a1 + a2;
+        a1 = a2;
+        a2 = a;
+        i++;
+    }
+    return a;
+}
+
+void SORT(int a[], int n){
+    int tg;
+    for(int i=1; i<= n; i++){
+        for(int j=i+1; j <= n; j++){
+            if(a[i] > a[j]){
+                tg = a[i];
+                a[i] = a[j];
+                a[j] = tg;
+            }
+        }
+    }
+}
+*/
+int a[100][100];
+void start(int n){
+    int d=0, dem=n*n, hang = n-1, cot = n-1;
+    while(d <= n/2){
+        for (int i = d; i <= cot; ++i) a[d][i] = dem--;
+        for (int i = d + 1; i <= hang; ++i) a[i][cot] = dem--;
+        for (int i = cot - 1; i >= d; --i) a[hang][i] = dem--;
+        for (int i = hang - 1; i > d; --i) a[i][d] = dem--;
+        d++;
+        hang--;
+        cot--;
+    }
+}
+int main(){
+    int k;
+    scanf("%d", &k);
+    f(x,1,k){
+        int n;
+        scanf("%d", &n);
+        start(n);
+        printf("Test %d",x);
+        printf(":\n");
+        f(i,0,n-1){
+            f(j,0,n-1){
+                printf("%d ", a[i][j]);
+            }
+            printf("\n");
+        }
+    }
+    return 0;
+}

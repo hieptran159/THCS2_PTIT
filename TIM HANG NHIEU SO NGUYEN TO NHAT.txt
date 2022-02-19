@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int n,dem[1000] ,mx, a[50][50], t;
+int snt(int n){
+	if(n < 2) return 0;
+	for(int i = 2; i <= sqrt(n); ++i){
+		if(n % i == 0) return 0;
+	}
+	return n;
+}
+int max(int a, int b){
+	return (a>b) ? a:b;
+}
+int main()
+{
+    scanf("%d", &n);
+    for(int i = 1;i <= n; ++i){
+    	for(int j = 1; j <= n; ++j) {
+			scanf("%d", &a[i][j]);
+			if(a[i][j] == snt(a[i][j])) dem[i]++;
+		}
+		mx = max(dem[i],mx);	
+	}
+	for(int i = 1; i <= n; ++i){
+		if(mx == dem[i]){
+			printf("%d\n",i);
+			for(int j = 1; j <= n; ++j){
+				if(snt(a[i][j]) == a[i][j]) printf("%d ",a[i][j]);
+			}
+			return 0;
+		} 
+	}
+	
+	
+    return 0;
+}

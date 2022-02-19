@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+int max(int a, int b){
+    return (a > b) ? a:b;
+}
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int dem(int n, int p){
+    int ans = 0;
+    while(n % p == 0){
+        ans++;
+        n /= p;
+    }
+    return ans;
+}
+
+int main(){
+    int t;
+    scanf("%d",&t);
+    while(t--){
+        int n, k ,ans = 0,p;
+        scanf("%d%d", &n, &p);
+        f(i,2,n){
+            ans += dem(i,p);
+        }
+        printf("%d\n",ans);
+    }
+    return 0;
+}

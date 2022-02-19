@@ -1,0 +1,31 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int n, m;
+
+int main()
+{	
+    scanf("%d",&n);
+        printf("a");
+        printf("\n");
+    int mn=1;
+    for(int i = 2; i <= n; ++i){
+            if(i % 2 == 0){
+	            for(int h = mn + i; h >= mn + 1; --h){
+		            printf("%c",h+96);
+		            printf(" ");
+				}
+        }
+            else{
+            for(int h = mn + 1; h <= mn + i; ++h){
+	            printf("%c",h+96);
+	            printf(" ");}
+        }
+        printf("\n");
+        mn = mn+i;
+    }
+	
+	return 0;
+}

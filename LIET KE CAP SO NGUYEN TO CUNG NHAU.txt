@@ -1,0 +1,40 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int gcd(int a, int b){
+    if (a == 0 || b == 0){
+        return a + b;
+    }
+    while (a != b){
+        if (a > b){
+            a -= b;
+        }else{
+            b -= a;
+        }
+    }
+    return a;
+}
+int main()
+{
+    int m, n;
+    scanf("%d",&m);
+    scanf("%d",&n);
+    for(int i=m; i<=n; ++i){
+        for(int j=i+1; j<=n; ++j){
+            if(gcd(i,j)==1){
+                printf("(");
+                printf("%d",i);
+                printf(",");
+                printf("%d",j);
+                printf(")");
+                printf("\n");
+            }
+        }
+    }
+	return 0;
+}

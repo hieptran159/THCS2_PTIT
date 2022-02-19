@@ -1,0 +1,49 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+
+
+int main()
+{	
+	int h;
+	scanf("%d",&h);
+	while(h--){
+	int a[1000],b[1000], t=0, k=0, nho=0, n[1000];
+    char c[1000], d[1000];
+    scanf("%s%s",&c,&d);
+   fn(i,strlen(c)-1,0){
+        a[++t]=c[i]-'0' ;
+   }
+   fn(i,strlen(d)-1,0){
+        b[++k]=d[i]-'0' ;
+   }
+   if ( t>=k ){
+    f(i,k+1,t) b[i]=0;
+   }
+   else {f(i,t+1,k) a[i]=0;}
+
+    f(i,1,max(t,k)){
+     if(a[i]+b[i]+nho >= 10) { n[i]=(a[i]+b[i]+nho)%10 , nho=1;}
+    else { n[i]=a[i]+b[i]+nho ,nho=0;}
+    }
+    if(nho==1) { printf("1"); fn( i,max(t,k),1) { printf("%d",n[i]);}}
+    else
+       {
+           fn(i,max(t,k),1)
+            printf("%d",n[i]);
+       }
+		printf("\n");
+	}
+	return 0;
+}

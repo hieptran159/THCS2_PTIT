@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+bool snt(int n){
+    if(n < 2) return false;
+    for(int i = 2; i <= sqrt(n); ++i){
+        if(n % i == 0) return false;
+    }
+    return true;
+}
+int main(){
+    int n;
+    scanf("%d", &n);
+    int d, s = 0 , s1 = 0, m;
+    m = n;
+    while(m!=0){
+        s1 += m % 10;
+        m /= 10;
+    }
+    for(int i = 2; i <= n; i++){
+        d=0;
+        while(n % i == 0){
+            ++d;
+            n /= i;
+        }
+        if(d >= 1) {
+            if(snt(i) == true ) {
+                int z = i, s2 = 0;
+                while(z!=0){
+                    s2 += z % 10;
+                    z /= 10;
+                }
+                s2 *= d;
+                s += s2;
+            }
+        }
+    }
+//        printf("%d %d \n",s,s1);
+    if(s == s1) printf("YES");
+    else printf("NO");
+
+    return 0;
+}

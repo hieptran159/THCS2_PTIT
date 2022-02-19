@@ -1,0 +1,63 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+bool snt (int n){
+	if(n<2) return false;
+	for (int i=2; i<=sqrt(n); ++i){
+		if(n%i==0) return false;
+	}
+	return true;
+}
+void SORT(int a[], int n){
+    int tg;
+    for(int i=1; i<= n; i++){
+        for(int j=i+1; j <= n; j++){
+            if(a[i] > a[j]){
+                tg = a[i];
+                a[i] = a[j];
+                a[j] = tg;
+            }
+        }
+    }
+}
+
+int main()
+{	
+	int h;
+	scanf("%d",&h);
+	for (int j=1; j<= h; ++j){
+    int n,a[10000],dem[10000], b[10000],c=0;
+   	scanf("%d",&n);
+    for(int i=1;i<=n;i++)
+    {
+        scanf("%d",&b[i]);
+        
+    }
+    f(i,1,n){
+    	if( snt(b[i])==true)
+    	a[++c]=b[i];
+	}
+     SORT(a,c);
+     f(i,1,c){
+     	dem[a[i]]++;
+	 }
+   printf("Test %d",j);
+    printf(":\n");
+    for(int i=1;i<=c;i++)
+    {
+        if(dem[a[i]]>=1){printf("%d xuat hien %d",a[i],dem[a[i]]);
+        printf(" lan\n");
+        dem[a[i]]=0;}
+    }
+}
+	return 0;
+	
+}

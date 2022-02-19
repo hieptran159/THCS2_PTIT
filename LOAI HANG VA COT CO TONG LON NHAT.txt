@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int a[1000][1000],sum[1000],max,ans,sum1[1000];
+
+int main()
+{
+	int x;
+	scanf("%d",&x);
+	for(int k=1; k<=x; ++k){
+		int m,n;
+		scanf("%d %d",&m,&n);
+		max=0,ans = 0;
+		for(int i=1; i<=m; ++i){
+			for(int j=1; j<=n; ++j){
+					scanf("%d",&a[i][j]);
+					sum[i]+=a[i][j];
+				}
+				if(sum[i]>max){ans=i;max=sum[i];}
+			}
+
+		for(int j=1; j<=n; ++j)a[ans][j]=1005;
+		int max1 = 0, ans1 = 0;
+		for(int i=1; i<=n; ++i){
+			for(int j=1; j<=m; ++j){
+					if(a[j][i] != 1005) sum1[i]+=a[j][i];
+				}
+				if(sum1[i]>max1){ans1=i;max1=sum1[i];}
+			}
+		for(int i=1; i<=m; ++i)a[i][ans1]=1005;
+		printf("Test %d:\n",k);
+		for(int i=1; i<=m; ++i){
+			for(int j=1; j<=n; ++j)if(a[i][j] != 1005) printf("%d ",a[i][j]);
+			if(i != ans) printf("\n");
+			}
+        f(i,1,n) sum[i] = 0, sum1[i] = 0;
+        f(i,1,m) sum[i] = 0, sum1[i] = 0;
+		}
+	return 0;
+}

@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+ 
+int main() {
+	int t;
+	scanf("%d",&t);
+	fflush(stdin);
+	while(t--) {
+		int chan = 0, le = 0, soluong = 0;
+		int n;
+		char A[1000] = "";
+		char x = '\n';
+		int st = 1;
+		while (x == '\n') x = getchar();
+		A[0] = x;
+		while (x != '\n')
+		{
+			x = getchar();
+			A[st] = x;
+			st++;
+		}
+		A[st - 1] = 0;
+		char *A1 = A;
+		char *end = A1;
+		int k = 0;
+		while(*end)
+		{
+			n = strtol(A1, &end, 10);
+			if (n & 1) le++;
+			else chan++;
+			soluong++;
+			while (*end == ',') {
+				end++;
+			}
+			A1 = end;
+			k++;
+		}
+		if (k == 0)
+		{
+			 t++;
+			 continue;
+		}
+		if ((soluong % 2 == 0 && chan > le) || (soluong % 2 != 0 && le > chan)) printf("YES");
+		else printf("NO");
+		printf("\n");
+	}
+	return 0;
+}

@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#include <ctype.h>
+#define space " "
+
+void down(char s[]){
+    for(int i = 0; i < strlen(s); ++i){
+        if(s[i] >= 'A' && s[i] <= 'Z') s[i] += 32;
+    }
+}
+
+int main(){
+	int t;
+	scanf("%d\n",&t);
+	while(t--){
+		char s[100];
+		char *token;
+		fgets(s,100,stdin);
+        down(s);
+		token = strtok(s, space);
+		while(token != NULL){
+			*token = toupper(*token);
+			printf("%s ",token);
+			token = strtok(NULL, space);
+		}
+	}
+    return 0;
+}

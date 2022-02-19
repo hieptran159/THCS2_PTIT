@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <math.h>
+#include <string.h>
+#define ll long long
+
+int n, m, a[105];
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+void SORT(int a[], int n){
+    int tg;
+    for(int i = 0; i <= n; i++){
+        for(int j = i+1; j <= n; j++){
+            if(a[i] > a[j]){
+                tg = a[i];
+                a[i] = a[j];
+                a[j] = tg;
+            }
+        }
+    }
+}
+int main(){
+	
+    scanf("%d", &n);
+    int min;
+    for(int i = 0; i < n; ++i) scanf("%d",&a[i]);
+    for(int i = 0; i < n ; ++i){
+    	printf("Buoc %d: ",i);
+    	SORT(a,i);
+    	for(int j = 0; j <= i; ++j)
+    	printf("%d ",a[j]);
+    	printf("\n");
+    	
+	}
+
+//	for(int i = 0; i < n; ++i) printf("%d ",a[i]);
+
+    return 0;
+}

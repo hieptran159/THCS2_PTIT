@@ -1,0 +1,19 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int n, m;
+
+int main()
+{	
+    scanf("%d",&n);
+    for(int i = 1; i <= n; ++i){
+        for(int j = 2; j <= 2*i; j += 2)
+            printf("%c",j+62);
+        for(int j = 2 * i - 2; j >= 1; j -= 2)
+            printf("%c",j+62);
+        printf("\n");
+    }
+	return 0;
+}

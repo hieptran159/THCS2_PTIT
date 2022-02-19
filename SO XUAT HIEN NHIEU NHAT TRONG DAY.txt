@@ -1,0 +1,33 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int cnt[30005];
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t!=0){
+        t--;
+        int n, a[200], mx=0, id;
+        scanf("%d",&n);
+        f(i,1,n){
+            scanf("%d",&a[i]);
+            cnt[a[i]]++;
+        }
+        f(i,1,n){
+            if(cnt[a[i]]>mx) mx=cnt[a[i]];
+        }
+        f(i,1,n){
+        if(cnt[a[i]]==mx) {printf("%d",a[i]); cnt[a[i]]=0; printf(" ");}
+        }
+        f(i,1,n) cnt[a[i]]=0;
+        printf("\n");
+    }
+
+	return 0;
+}

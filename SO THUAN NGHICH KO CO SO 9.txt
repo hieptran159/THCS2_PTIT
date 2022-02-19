@@ -1,0 +1,52 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+bool stn( int n)
+{
+        int  a[100], b=0 ,s, t=0 , c=0,k=0, v=0;
+        while(n!=0){
+           a[++c]=n%10;
+           n/=10;
+            }
+            f(i,1,c){
+                if(a[i]==a[c-i+1]) k++;
+            }
+            f(i,1,c) {
+            	if(a[i]==9) v++;
+			}
+            if(k==c && v==0 )  return true;
+            return false;
+}
+bool tongdem( int n)
+{	
+	int m, s=0, c=0,l, b=0, a[100];
+	l=n;
+	while(n!=0){
+		a[++c]=n%10;
+		n/=10;
+	}
+	for (int i=1; i<=c ;++i)
+	if (a[i] != 9) return true;
+	return false;
+}
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main() {
+	
+		int n, k=0,m;
+		scanf("%d",&n);
+		f(i,2,n){
+		
+		if(stn(i)==true ) {
+			k++;
+			printf("%d ",i);
+		}
+	}	
+		printf("\n%d",k);
+		
+	return 0;
+}

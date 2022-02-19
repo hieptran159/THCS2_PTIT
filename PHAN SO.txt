@@ -1,0 +1,88 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll long long
+
+void swap(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int GCD(int a, int b){
+    if(b == 0) return a;
+    return GCD(b,a%b);
+}
+int LCM(int a, int b){
+    return (a*b)/GCD(a,b);
+}
+
+typedef struct Phanso{
+    int tuso, mauso;
+}ps;
+ps rutgon(ps a){
+    ps c;
+    c.tuso = a.tuso/GCD(a.tuso,a.mauso);
+    c.mauso = a.mauso/GCD(a.tuso,a.mauso);
+    return c;
+}
+ps quydong(ps a, ps b){
+    ps c;
+    if(b.mauso % a.mauso == 0){
+        c.tuso = a.tuso * (b.mauso/a.mauso);
+        c.mauso = a.mauso * (b.mauso/a.mauso);
+    }
+    else if(a.mauso % b.mauso == 0){
+        c.tuso = a.tuso;
+        c.mauso = a.mauso;
+    }
+    else {
+        c.tuso = a.tuso * b.mauso;
+        c.mauso = a.mauso * b.mauso;
+    }
+    rutgon(c);
+    return c;
+}
+
+ps tong(ps a, ps b){
+    ps c;
+    c.tuso = a.tuso * b.mauso + b.tuso * a.mauso;
+    c.mauso = a.mauso * b.mauso;
+    c = rutgon(c);
+    return c;
+}
+ps thuong (ps a, ps b){
+    ps c;
+    c.tuso = a.tuso * b.mauso;
+    c.mauso = a.mauso * b.tuso;
+    c = rutgon(c);
+    return c;
+}
+void print(ps a){
+    printf("%d/%d ",a.tuso,a.mauso);
+}
+
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    for(int i = 1; i <= t; ++i){
+        ps a, b, c;
+        scanf("%d%d",&a.tuso,&a.mauso);
+        scanf("%d%d",&b.tuso,&b.mauso);
+        a = rutgon(a);
+        b = rutgon(b);
+        printf("Case #%d:\n",i);
+        c = quydong(a,b);
+        print(c);
+        c = quydong(b,a);
+        printf("%d/%d\n",c.tuso,c.mauso);
+        c = tong(a, b);
+        printf("%d/%d\n",c.tuso,c.mauso);
+        c = thuong (a,b);
+        print(c); printf("\n");
+    }
+}

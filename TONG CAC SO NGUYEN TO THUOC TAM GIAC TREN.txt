@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+
+bool snt(int n){
+	if(n < 2) return false;
+	for(int i = 2; i <= sqrt(n); ++i){
+		if(n % i == 0) return false;
+	}
+	return true;
+}
+
+int sum , n, k, a[50][50], b[205], c;
+
+int main(){
+    scanf("%d",&n);
+    for(int i = 1; i <= n; ++i){
+    	for(int j = 1; j <= n;++j) scanf("%d",&a[i][j]);
+	}
+	for(int i = 1; i <= n; ++i){
+		for(int j = i ; j <= n; ++j) b[++c] = a[i][j];
+	}
+	for(int i = 1; i <= c; ++i){
+		if(snt(b[i]) == true) sum += b[i];
+	}
+	printf("%d",sum);
+    
+
+
+    return 0;
+}

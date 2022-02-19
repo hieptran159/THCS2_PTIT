@@ -1,0 +1,70 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+void SORT(int a[], int n){
+    int tg;
+    for(int i=1; i<= n; i++){
+        for(int j=i+1; j <= n; j++){
+            if(a[i] > a[j]){
+                tg = a[i];
+                a[i] = a[j];
+                a[j] = tg;
+            }
+        }
+    }
+}
+void SORTD(int a[], int n){
+    int tg;
+    for(int i=1; i<= n; i++){
+        for(int j=i+1; j <= n; j++){
+            if(a[i] < a[j]){
+                tg = a[i];
+                a[i] = a[j];
+                a[j] = tg;
+            }
+        }
+    }
+}
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+
+
+int main()
+{		
+		int x;
+		scanf("%d",&x);
+		f(j,1,x){
+		int n ,a[1005], b[1005],d[1005] ,c=0, t=0, k=0, m[1005];
+		scanf("%d",&n);
+		f(i,1,n) {
+			scanf("%d",&a[i]);
+		} SORT(a,n);
+		f(i,1,n){
+			scanf("%d",&b[i]);
+		} SORTD(b,n);
+		f(i,1,n){
+			d[c+=2]=a[i];
+		}
+		f(i,1,n){
+			m[k+=2]=b[i];
+		}
+		for (int i=2 ;i<=k ; i+=2){
+			d[i+1]=m[i];
+		}
+		printf("Test %d",j); printf(":\n");
+		f(i,2,c+1)
+		{
+			printf("%d ",d[i]);
+		}
+		printf("\n");
+	}
+	return 0;
+}

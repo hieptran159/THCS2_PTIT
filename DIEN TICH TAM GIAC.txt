@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int snt(int n){
+    if(n<2) {return 0;}
+    int i;
+    for (int i=2; i<=sqrt(n); ++i)
+    {
+        if(n%i==0){return 0;}
+    }
+    return n;
+}
+
+int max(int a, int b)
+{
+    return (a>b) ? a:b;
+}
+int min(int a, int b)
+{
+    return (a<b) ? a:b;
+}
+
+int giaithua(int a)
+{
+    if(a==1) return 1;
+    else  return a*giaithua(a-1);
+}
+long long GCD(long long  a, long long b) {
+    if (b == 0) return a;
+    return GCD(b, a % b);
+}
+long long LCM(long long a, long long b) {
+    return (a * b) / GCD(a, b);
+}
+
+int fbc(int  n)
+{
+    int a1 = 1, a2 = 1;
+    if (n == 1 || n == 2)
+        return 1;
+    int i = 3, a;
+    while (i <= n)
+    {
+        a = a1 + a2;
+        a1 = a2;
+        a2 = a;
+        i++;
+    }
+    return a;
+}
+
+
+int main()
+{       long long m ;
+	scanf("%lld",&m);
+	while(m--)
+	{
+		double x1,x2,x3,y1,y2,y3;
+		scanf("%lf%lf%lf%lf%lf%lf",&x1,&y1,&x2,&y2,&x3,&y3);
+		double a,b,c;
+		a=sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+		b=sqrt((x2-x3)*(x2-x3)+(y2-y3)*(y2-y3));
+		c=sqrt((x3-x1)*(x3-x1)+(y3-y1)*(y3-y1));
+		if(a+b<=c||a+c<=b||b+c<=a||a==0||b==0||c==0)
+            printf("INVALID\n");else {
+		double	p=(a+b+c)/2;
+		double  s=sqrt(p*(p-a)*(p-b)*(p-c));
+		printf("%.2lf\n",s);
+		}
+	}
+
+    return 0;
+}

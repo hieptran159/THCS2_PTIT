@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+
+int main()
+{
+
+    double a,b;
+	scanf("%lf%lf",&a,&b);
+	if(a==b&&b==0){printf("Vo so nghiem");} else 
+	if(a==0&&b!=0){printf("Vo nghiem");} else
+	printf("%.2lf",-b/a);
+}

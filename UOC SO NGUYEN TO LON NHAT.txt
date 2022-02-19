@@ -1,0 +1,32 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+
+
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	while(t--){
+	long long n;
+	int uoc;
+    scanf("%lld",&n);
+    int z=sqrt(n);
+    for(int i=2; i<=z; ++i){
+        if(n==i) break;
+        else{
+        while(n%i==0) n/=i;}
+    }
+    printf("%lld",n);
+    printf("\n");
+	}
+	return 0;
+}

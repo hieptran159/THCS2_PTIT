@@ -1,0 +1,30 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+int main() {
+	
+	int n, m, k, t;
+	scanf("%d",&n);
+	k=n;
+	t=n;
+	while(n--){
+		m=k-1; 
+		k--;
+		f(i,1,m) {
+			printf("~");
+		}
+		f(i,1,t){
+			printf("*");
+		} 
+		printf("\n");
+	}
+	
+	
+	return 0;
+}

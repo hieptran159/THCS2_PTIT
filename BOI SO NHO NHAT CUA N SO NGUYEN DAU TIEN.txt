@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+#include <stdbool.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+#define ll unsigned long long
+
+ll GCD(ll a, ll b){
+    if(b == 0) return a;
+    return GCD(b,a % b);
+}
+ll LCM(ll a, ll b){
+    return (a/GCD(a,b))*b;
+}
+int main(){
+    int t;
+    scanf("%d",&t);
+    while(t--){
+    ll a, b,n,x = 1;
+    scanf("%lld",&n);
+    f(i,2,n){
+        x = LCM(x,i);
+    }
+    printf("%lld\n",x);
+    }
+    return 0;
+}

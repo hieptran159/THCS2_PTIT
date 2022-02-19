@@ -1,0 +1,25 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+int n, m;
+
+int main()
+{	
+    scanf("%d",&n);
+    for(int i = 1; i <= n; ++i){
+        int heso = n - 1, so = i;
+            printf("%c",i+64);
+            printf(" ");
+        for(int j = 2; j <= i; ++j){
+            printf("%c",so + heso + 64);
+            printf(" ");
+            so += heso;
+            heso--;
+        }
+        printf("\n");
+    }
+	
+	return 0;
+}

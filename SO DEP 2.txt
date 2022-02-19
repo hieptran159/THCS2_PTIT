@@ -1,0 +1,47 @@
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define f(i,x,y) for(int i=x; i<=y; ++i)
+#define fn(i,x,y) for(int i=x; i>=y; --i)
+
+int max( int n, int m){
+	return (n>m) ? n:m;
+}
+void swap(int *a, int *b){
+		int temp = *a; 
+		*a = *b;
+		*b = temp;
+}
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+
+
+int main()
+{	
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		char a[1000];
+		scanf("%s",a);
+		int n=strlen(a)-1;
+		if(a[0]!=56 || a[n]!=56) printf("NO\n");
+		else 
+			{
+			int h=0,s=16;
+			for(int i=1;i<=n/2;i++){
+			s=s+a[i]+a[n-i]-48-48;
+			if((a[i]-48)!=(a[n-i]-48)){
+				h=1;printf("NO\n");break;
+				}
+			}
+			if(h==0){
+				if(s%10==0)printf("YES\n");
+				else printf("NO\n");
+				}
+			}
+	}
+
+	return 0;
+}

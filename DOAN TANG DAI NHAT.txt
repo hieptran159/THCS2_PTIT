@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	for(int h = 1; h <= t; ++h){
+		int n,a[1000],nho[1000],c=0,mx=0;
+		a[0]=-1;nho[0]=0;
+		scanf("%d",&n);
+		for(int i=1; i<=n; ++i){
+			scanf("%d",&a[i]);
+				if(a[i]<=a[i-1]){
+					nho[++c]=i-1;
+					int dai=nho[c]-nho[c-1];
+					mx=(mx<dai)? dai:mx;
+				}
+			}
+		nho[++c]=n;
+		int dai=nho[c]-nho[c-1];
+		mx=(mx<dai)? dai:mx;
+		printf("Test %d:\n",h);	
+		printf("%d\n",mx);
+		for(int i=1; i<=c; ++i){
+			if(nho[i]-nho[i-1]==mx)
+				{
+					for(int j=nho[i-1]+1; j<=nho[i]; ++j)printf("%d ",a[j]);
+						printf("\n");
+						}
+			}		
+	}
+	return 0;
+}
